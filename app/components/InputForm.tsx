@@ -1,28 +1,13 @@
 "use client"
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from 'react-query';
-import { cipherSchema } from './cipherSchema';
-import axios from 'axios';
-
-interface FormData {
-    text: string;
-    shift_amount: number;
-    direction: string;
-}
+import { useCipher } from './useChiper';
+import { FormData } from './useChiper';
 
 const InputForm = () => {
-    const { register, handleSubmit, formState: { errors }} = useForm<FormData>({
-        resolver: zodResolver(cipherSchema)
-    })
+  const { register, handleSubmit, errors, mutation } = useCipher();
 
-    const mutation = useMutation((newData: FormData) => {
-        return axios.post('/api/cipher', newData).then(res => res.data)
-    }) 
-
-    const onSubmit: SubmitHandler<FormData> = (data) => {
-        mutation.mutate(data);
-    };
+  const onSubmit = (data: FormData) => {
+    mutation.mutate(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
