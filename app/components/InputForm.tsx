@@ -24,7 +24,7 @@ const InputForm = () => {
   >
     <div className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2">Text:</label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" {...register('text')} />
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" {...register('text')} />
       {errors.text && <p className="text-red-500 text-xs italic">{errors.text?.message}</p>}
     </div>
     <div className="mb-4">
@@ -64,10 +64,15 @@ const InputForm = () => {
     {mutation.isLoading && <p>Processing...</p>}
       {mutation.isError && <p>Error: {((mutation.error as any)?.message as string) ?? 'Unknown error'}</p>}
       {mutation.isSuccess && mutation.data && (
-        <div className="mt-4 bg-gray-100 p-4 rounded">
-          <h3 className="text-lg font-bold">Result:</h3>
-          <p className="text-gray-800">{mutation.data.result}</p> {/* Ensure this matches how your data structure looks */}
-        </div>
+        <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="mt-4 bg-blue-100 p-4 rounded border border-blue-500"
+      >
+        <h3 className="text-lg font-bold text-blue-700">Result:</h3>
+        <p className="text-gray-800 text-4xl md:text-5xl lg:text-5xl font-bold">{mutation.data.result}</p>
+      </motion.div>
       )}
   </motion.form>
 );
