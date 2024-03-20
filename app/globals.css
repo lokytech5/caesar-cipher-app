@@ -2,26 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Optional: Define custom CSS variables for additional theming or specific color usages */
+:root {
+  --custom-color: #123456; /* Example custom color */
+}
+
+/* TailwindCSS Dark Mode: Using the 'media' strategy */
+@media (prefers-color-scheme: dark) {
+  /* Example of overriding a custom property for dark mode */
+  :root {
+    --custom-color: #654321;
+  }
+}
+
+body {
+  @apply bg-gray-100 text-gray-800; /* Light mode background and text colors */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  body {
+    @apply bg-gray-900 text-white; /* Dark mode background and text colors */
   }
-} */
-
-body {
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
 }

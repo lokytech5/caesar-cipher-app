@@ -12,7 +12,7 @@ export interface FormData {
   }
   
   export const useCipher = () => {
-    const { register, handleSubmit, formState: { errors }} = useForm<FormData>({
+    const { register, handleSubmit, formState: { errors }, reset} = useForm<FormData>({
       resolver: zodResolver(cipherSchema)
     });
   
@@ -20,5 +20,5 @@ export interface FormData {
       return axios.post('/api/cipher', newData).then(res => res.data);
     });
   
-    return { register, handleSubmit, errors, mutation };
+    return { register, handleSubmit, errors, mutation, reset };
   };
