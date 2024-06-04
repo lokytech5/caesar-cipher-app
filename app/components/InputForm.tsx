@@ -12,6 +12,7 @@ const InputForm = () => {
 
   const onClear = () => {
     reset();
+    mutation.reset();
   }
 
   return (
