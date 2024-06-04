@@ -76,7 +76,7 @@ export const cipherSchema = z.object({
 ```
 
 ## Live Link
- - ![Live link](https://main--ecaesar-cipher-encrypt.netlify.app/)
+ - [Live link](https://main--ecaesar-cipher-encrypt.netlify.app/)
 
 ## Installation
  - Clone the repository
